@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SweetCrumb Bakery | Cakes, Pastries & Fresh Bakes</title>
+
+<meta
+    name="description"
+    content="Fresh cakes, pastries, cookies, breads and custom bakery orders. Explore bakery favorites and request availability, pricing or a custom cake quote."
+>
+
+<style>
+:root{
+    --brown:#6d4c41;
+    --brown-dark:#4e342e;
+    --rose:#d8898d;
+    --gold:#d8a34d;
+    --cream:#fff8f2;
+    --pink:#fff0f2;
+    --white:#ffffff;
+    --dark:#302724;
+    --text:#4a403c;
+    --muted:#7f756f;
+    --border:#eadfd9;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:var(--text);
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+.container{
+    width:min(1120px,calc(100% - 32px));
+    margin:auto;
+}
+
+.btn{
+    min-height:46px;
+    padding:0 22px;
+    border:0;
+    border-radius:8px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--brown);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--brown-dark);
+    transform:translateY(-2px);
+}
+
+.btn-rose{
+    background:var(--rose);
+    color:#fff;
+}
+
+.btn-light{
+    background:#fff;
+    color:var(--brown-dark);
+    border:1px solid var(--border);
+}
+
+/* TOP BAR */
+
+.topbar{
+    background:var(--brown-dark);
+    color:#eaded9;
+    padding:8px 0;
+    font-size:12px;
+}
+
+.topbar-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.topbar strong{
+    color:#fff;
+}
+
+/* HEADER */
+
+header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.navbar{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--brown-dark);
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:var(--pink);
+    display:grid;
+    place-items:center;
+    font-size:23px;
+}
+
+.logo span{
+    color:var(--rose);
+}
+
+.menu{
+    display:flex;
+    gap:23px;
+    list-style:none;
+}
+
+.menu a{
+    color:#625953;
+    font-size:14px;
+    font-weight:600;
+}
+
+.menu a:hover{
+    color:var(--brown);
+}
+
+/* HERO */
+
+.hero{
+    padding:72px 0 82px;
+    background:
+        radial-gradient(circle at 82% 20%,rgba(216,137,141,.18),transparent 28%),
+        linear-gradient(135deg,#fff5f2,#fffaf4);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:55px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border-radius:30px;
+    background:#f7e7e8;
+    color:var(--brown-dark);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.badge-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--rose);
+}
+
+.hero h1{
+    color:var(--dark);
+    font-size:56px;
+    line-height:1.08;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:var(--rose);
+}
+
+.hero p{
+    max-width:600px;
+    color:var(--muted);
+    font-size:17px;
+    margin-bottom:27px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.hero-points{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:29px;
+    color:#695f5a;
+    font-size:13px;
+}
+
+.hero-points strong{
+    color:var(--brown);
+}
+
+.bakery-visual{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 22px 50px rgba(80,55,45,.12);
+}
+
+.bakery-card{
+    min-height:325px;
+    border-radius:17px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#fff1f2,#fff2df);
+}
+
+.main-icon{
+    font-size:120px;
+}
+
+.float-item{
+    position:absolute;
+    width:64px;
+    height:64px;
+    border-radius:17px;
+    background:#fff;
+    display:grid;
+    place-items:center;
+    font-size:31px;
+    box-shadow:0 10px 26px rgba(70,50,45,.12);
+}
+
+.item-one{top:24px;left:25px;}
+.item-two{top:32px;right:30px;}
+.item-three{bottom:27px;left:48px;}
+.item-four{bottom:25px;right:38px;}
+
+/* FEATURES */
+
+.features{
+    padding:24px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.feature{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    padding:19px;
+    border-right:1px solid var(--border);
+}
+
+.feature:last-child{
+    border-right:0;
+}
+
+.feature-icon{
+    font-size:27px;
+}
+
+.feature h3{
+    color:var(--dark);
+    font-size:13px;
+    margin-bottom:2px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* COMMON */
+
+.section{
+    padding:72px 0;
+}
+
+.section-light{
+    background:var(--cream);
+}
+
+.section-heading{
+    max-width:660px;
+    margin:0 auto 38px;
+    text-align:center;
+}
+
+.section-heading span{
+    color:var(--rose);
+    text-transform:uppercase;
+    letter-spacing:1.8px;
+    font-size:11px;
+    font-weight:800;
+}
+
+.section-heading h2{
+    color:var(--dark);
+    font-size:38px;
+    line-height:1.2;
+    margin:8px 0 10px;
+}
+
+.section-heading p{
+    color:var(--muted);
+}
+
+/* CATEGORIES */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.category-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:25px 20px;
+    text-align:center;
+    transition:.25s;
+}
+
+.category-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 34px rgba(70,50,45,.08);
+}
+
+.category-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    background:#fff0f2;
+    display:grid;
+    place-items:center;
+    font-size:35px;
+}
+
+.category-card h3{
+    color:var(--dark);
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.category-card p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* PRODUCTS */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.product-image{
+    height:165px;
+    display:grid;
+    place-items:center;
+    position:relative;
+    background:linear-gradient(145deg,#fff2f3,#fff2df);
+    font-size:70px;
+}
+
+.product-label{
+    position:absolute;
+    top:12px;
+    left:12px;
+    padding:5px 9px;
+    border-radius:20px;
+    background:var(--rose);
+    color:#fff;
+    font-size:9px;
+    font-weight:800;
+}
+
+.product-content{
+    padding:17px;
+}
+
+.product-content small{
+    color:var(--brown);
+    font-weight:700;
+}
+
+.product-content h3{
+    color:var(--dark);
+    font-size:16px;
+    margin:5px 0;
+}
+
+.product-content p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.product-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:14px;
+}
+
+.price strong{
+    color:var(--dark);
+    font-size:18px;
+}
+
+.price del{
+    color:#aaa19b;
+    font-size:11px;
+    margin-left:4px;
+}
+
+.small-btn{
+    min-height:35px;
+    padding:0 11px;
+    display:inline-flex;
+    align-items:center;
+    border-radius:7px;
+    background:var(--brown);
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+}
+
+/* CTA */
+
+.cta{
+    padding:34px 0 72px;
+}
+
+.cta-box{
+    background:linear-gradient(135deg,var(--brown),var(--brown-dark));
+    color:#fff;
+    border-radius:18px;
+    padding:40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:35px;
+}
+
+.cta-box h2{
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:6px;
+}
+
+.cta-box p{
+    color:#eadfd9;
+}
+
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:42px;
+}
+
+.contact-info{
+    background:var(--dark);
+    color:#fff;
+    border-radius:16px;
+    padding:34px;
+}
+
+.contact-info h2{
+    font-size:29px;
+    line-height:1.25;
+    margin-bottom:12px;
+}
+
+.contact-info > p{
+    color:#d8d0cc;
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.info-row{
+    padding:13px 0;
+    border-top:1px solid rgba(255,255,255,.13);
+}
+
+.info-row strong{
+    display:block;
+    font-size:11px;
+    margin-bottom:4px;
+}
+
+.info-row span,
+.info-row a{
+    color:#d6ceca;
+    font-size:13px;
+}
+
+.info-row a:hover{
+    color:#fff;
+}
+
+.order-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.order-form input,
+.order-form select,
+.order-form textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    outline:none;
+    background:#fff;
+}
+
+.order-form input:focus,
+.order-form select:focus,
+.order-form textarea:focus{
+    border-color:var(--rose);
+    box-shadow:0 0 0 3px rgba(216,137,141,.1);
+}
+
+.order-form textarea{
+    min-height:105px;
+    resize:vertical;
+    grid-column:span 2;
+}
+
+.order-form button,
+.form-note{
+    grid-column:span 2;
+}
+
+.form-note{
+    color:#807873;
+    font-size:10px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    background:#2a211f;
+    color:#fff;
+    padding:48px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-size:23px;
+    font-weight:800;
+    margin-bottom:11px;
+}
+
+.footer-logo span{
+    color:var(--rose);
+}
+
+footer p,
+footer a{
+    color:#b8ada7;
+    font-size:12px;
+    line-height:1.8;
+}
+
+footer h4{
+    margin-bottom:12px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin-bottom:7px;
+}
+
+footer a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid #493a36;
+    margin-top:30px;
+    padding-top:18px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    color:#897b75;
+    font-size:11px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .menu{
+        display:none;
+    }
+
+    .hero-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .features-grid,
+    .category-grid,
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .container{
+        width:min(100% - 22px,1120px);
+    }
+
+    .topbar-inner{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .topbar-inner span:last-child{
+        display:none;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .navbar .btn{
+        padding:0 13px;
+        font-size:11px;
+    }
+
+    .hero{
+        padding:55px 0;
+    }
+
+    .hero h1{
+        font-size:41px;
+        letter-spacing:-1.2px;
+    }
+
+    .bakery-card{
+        min-height:270px;
+    }
+
+    .main-icon{
+        font-size:90px;
+    }
+
+    .features-grid,
+    .category-grid,
+    .product-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        justify-content:flex-start;
+        border-right:0;
+        border-bottom:1px solid var(--border);
+    }
+
+    .section{
+        padding:60px 0;
+    }
+
+    .section-heading h2{
+        font-size:31px;
+    }
+
+    .cta-box{
+        padding:29px 22px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cta-box h2{
+        font-size:27px;
+    }
+
+    .order-form{
+        grid-template-columns:1fr;
+    }
+
+    .order-form textarea,
+    .order-form button,
+    .form-note{
+        grid-column:auto;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span>Cakes · Pastries · Cookies · Fresh Bread · Custom Orders</span>
+        <span>Call Us: <strong>(312) 555-0174</strong></span>
+    </div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="#home" class="logo">
+            <div class="logo-icon">🧁</div>
+            Sweet<span>Crumb</span>
+        </a>
+
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Bakery Menu</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#order">Custom Order</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#order" class="btn btn-primary">
+            Order Inquiry
+        </a>
+
+    </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Freshly baked favorites made for every occasion
+            </div>
+
+            <h1>
+                Fresh bakes made to make your day <span>a little sweeter.</span>
+            </h1>
+
+            <p>
+                Discover cakes, pastries, cookies, breads and custom bakery
+                creations for birthdays, celebrations, office events
+                and everyday treats.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#favorites" class="btn btn-primary">
+                    Explore Favorites
+                </a>
+
+                <a href="#order" class="btn btn-light">
+                    Request Custom Cake
+                </a>
+
+            </div>
+
+            <div class="hero-points">
+                <div><strong>✓</strong> Fresh bakery items</div>
+                <div><strong>✓</strong> Custom cake options</div>
+                <div><strong>✓</strong> Pickup & order inquiries</div>
+            </div>
+
+        </div>
+
+        <div class="bakery-visual">
+
+            <div class="bakery-card">
+
+                <div class="main-icon">🎂</div>
+
+                <div class="float-item item-one">🥐</div>
+                <div class="float-item item-two">🍪</div>
+                <div class="float-item item-three">🧁</div>
+                <div class="float-item item-four">🍞</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="container features-grid">
+
+        <div class="feature">
+            <div class="feature-icon">🥐</div>
+            <div>
+                <h3>Fresh Bakes</h3>
+                <p>Prepared regularly for freshness</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🎂</div>
+            <div>
+                <h3>Custom Cakes</h3>
+                <p>Options for special occasions</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🎉</div>
+            <div>
+                <h3>Event Orders</h3>
+                <p>Bakery options for celebrations</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📦</div>
+            <div>
+                <h3>Easy Pickup</h3>
+                <p>Confirm pickup details when ordering</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="section section-light" id="categories">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>Bakery menu</span>
+
+            <h2>
+                Something delicious for every craving.
+            </h2>
+
+            <p>
+                Explore everyday bakery favorites and custom options
+                for events and celebrations.
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <article class="category-card">
+
+                <div class="category-icon">🎂</div>
+
+                <h3>Cakes</h3>
+
+                <p>
+                    Celebration cakes, custom designs and classic flavors.
+                </p>
+
+            </article>
+
+            <article class="category-card">
+
+                <div class="category-icon">🥐</div>
+
+                <h3>Pastries</h3>
+
+                <p>
+                    Croissants, pastries and individual sweet treats.
+                </p>
+
+            </article>
+
+            <article class="category-card">
+
+                <div class="category-icon">🍪</div>
+
+                <h3>Cookies & Treats</h3>
+
+                <p>
+                    Cookies, brownies and bite-sized bakery favorites.
+                </p>
+
+            </article>
+
+            <article class="category-card">
+
+                <div class="category-icon">🍞</div>
+
+                <h3>Fresh Bread</h3>
+
+                <p>
+                    Selected breads and baked goods for everyday enjoyment.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FAVORITES -->
+
+<section class="section" id="favorites">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>Customer favorites</span>
+
+            <h2>
+                Classic bakery picks worth trying.
+            </h2>
+
+            <p>
+                Sample pricing is shown below. Replace it with your
+                current bakery menu and actual prices before publishing.
+            </p>
+
+        </div>
+
+        <div class="product-grid">
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="product-label">POPULAR</span>
+                    🎂
+                </div>
+
+                <div class="product-content">
+
+                    <small>Cakes</small>
+
+                    <h3>Chocolate Celebration Cake</h3>
+
+                    <p>
+                        Rich chocolate cake suitable for birthdays and celebrations.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <strong>$42</strong>
+                        </div>
+
+                        <a href="#order" class="small-btn">
+                            Inquire
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="product-label">FRESH</span>
+                    🥐
+                </div>
+
+                <div class="product-content">
+
+                    <small>Pastries</small>
+
+                    <h3>Butter Croissant Box</h3>
+
+                    <p>
+                        Flaky pastry box suitable for breakfast or office treats.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <strong>$18</strong>
+                        </div>
+
+                        <a href="#order" class="small-btn">
+                            Inquire
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    🍪
+                </div>
+
+                <div class="product-content">
+
+                    <small>Cookies</small>
+
+                    <h3>Classic Cookie Box</h3>
+
+                    <p>
+                        Assorted cookies packed for sharing or gifting.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <strong>$16</strong>
+                        </div>
+
+                        <a href="#order" class="small-btn">
+                            Inquire
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="product-label">CUSTOM</span>
+                    🧁
+                </div>
+
+                <div class="product-content">
+
+                    <small>Cupcakes</small>
+
+                    <h3>Custom Cupcake Dozen</h3>
+
+                    <p>
+                        Cupcake options for parties, events and celebrations.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <strong>$30</strong>
+                        </div>
+
+                        <a href="#order" class="small-btn">
+                            Inquire
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div>
+
+                <h2>
+                    Planning a birthday or special event?
+                </h2>
+
+                <p>
+                    Tell us your date, serving size and preferred flavor
+                    to request a custom cake or bakery quote.
+                </p>
+
+            </div>
+
+            <a href="#order" class="btn btn-rose">
+                Request Custom Order
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ORDER FORM -->
+
+<section class="section section-light" id="order">
+
+    <div class="container contact-grid">
+
+        <div class="contact-info" id="contact">
+
+            <h2>
+                Tell us what you'd like to order.
+            </h2>
+
+            <p>
+                Send your bakery requirement and our team will contact you
+                regarding availability, customization, pickup timing and pricing.
+            </p>
+
+            <div class="info-row">
+                <strong>PHONE</strong>
+                <a href="tel:+13125550174">(312) 555-0174</a>
+            </div>
+
+            <div class="info-row">
+                <strong>EMAIL</strong>
+                <a href="mailto:orders@sweetcrumbbakery.com">
+                    orders@sweetcrumbbakery.com
+                </a>
+            </div>
+
+            <div class="info-row">
+                <strong>BAKERY</strong>
+                <span>1840 Westfield Avenue, Chicago, IL 60614</span>
+            </div>
+
+            <div class="info-row">
+                <strong>HOURS</strong>
+                <span>Mon–Sat: 7:00 AM–7:00 PM · Sun: 8:00 AM–4:00 PM</span>
+            </div>
+
+            <div class="info-row">
+                <strong>ALLERGY NOTICE</strong>
+                <span>
+                    Products may be prepared in a kitchen that handles
+                    common allergens. Contact us about ingredient concerns before ordering.
+                </span>
+            </div>
+
+        </div>
+
+        <form class="order-form" action="#order" method="post">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required>
+
+            <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required>
+
+            <select name="product_type" required>
+                <option value="">What Are You Ordering?</option>
+                <option value="cake">Custom Cake</option>
+                <option value="cupcakes">Cupcakes</option>
+                <option value="pastries">Pastries</option>
+                <option value="cookies">Cookies / Treats</option>
+                <option value="bread">Fresh Bread</option>
+                <option value="event-order">Event / Bulk Order</option>
+            </select>
+
+            <input
+                type="date"
+                name="pickup_date"
+                required>
+
+            <select name="servings">
+                <option value="">Approximate Servings</option>
+                <option value="under-10">Under 10</option>
+                <option value="10-20">10–20</option>
+                <option value="20-40">20–40</option>
+                <option value="40-75">40–75</option>
+                <option value="75-plus">75+</option>
+            </select>
+
+            <select name="budget">
+                <option value="">Approximate Budget</option>
+                <option value="under-50">Under $50</option>
+                <option value="50-100">$50–$100</option>
+                <option value="100-200">$100–$200</option>
+                <option value="200-plus">$200+</option>
+            </select>
+
+            <select name="occasion">
+                <option value="">Occasion</option>
+                <option value="birthday">Birthday</option>
+                <option value="wedding">Wedding</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="everyday">Everyday Order</option>
+                <option value="other">Other</option>
+            </select>
+
+            <textarea
+                name="message"
+                placeholder="Tell us about flavor, design, colors, wording, quantity or other bakery requirements"></textarea>
+
+            <div class="form-note">
+                Submitting this form is an order inquiry only. Final availability,
+                design details, pricing, ingredients and pickup timing are confirmed
+                separately before an order is accepted.
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Submit Bakery Order Inquiry
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-logo">
+                    Sweet<span>Crumb</span>
+                </div>
+
+                <p>
+                    Fresh cakes, pastries, cookies, breads and
+                    custom bakery orders for everyday treats
+                    and special occasions.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Bakery Menu</h4>
+
+                <ul>
+                    <li><a href="#categories">Cakes</a></li>
+                    <li><a href="#categories">Pastries</a></li>
+                    <li><a href="#categories">Cookies & Treats</a></li>
+                    <li><a href="#categories">Fresh Bread</a></li>
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#favorites">Bakery Favorites</a></li>
+                    <li><a href="#order">Custom Order</a></li>
+                    <li><a href="#contact">Contact Details</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SweetCrumb Bakery. All rights reserved.
+            </span>
+
+            <span>
+                Product availability and pricing are confirmed before ordering.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
